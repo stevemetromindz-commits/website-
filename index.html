@@ -1,168 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pro Website Monitor</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @keyframes pulse-green { 0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); } 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
-        .online-pulse { animation: pulse-green 2s infinite; }
-        .custom-scroll::-webkit-scrollbar { width: 4px; }
-        .custom-scroll::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 10px; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NeuraFlow AI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+
+    body {
+      background: radial-gradient(circle at top right, #312e81 0%, #020617 45%, #020617 100%);
+    }
+
+    .glass {
+      background: rgba(15, 23, 42, 0.72);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+    }
+
+    .glow {
+      box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.18), 0 20px 65px rgba(59, 130, 246, 0.25);
+    }
+  </style>
 </head>
-<body class="bg-gray-900 text-gray-100 min-h-screen p-4 md:p-8">
-
-    <div class="max-w-6xl mx-auto">
-        <div class="flex flex-col md:flex-row justify-between items-center mb-10 gap-4">
-            <div>
-                <h1 class="text-3xl font-black text-emerald-500 tracking-tight">SITEWATCH <span class="text-gray-500 font-light text-xl italic">v2.0</span></h1>
-                <p class="text-gray-400 text-sm">Real-time status & latency tracking</p>
-            </div>
-            <div class="flex gap-2">
-                <button onclick="checkAllNow()" class="bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded-lg text-sm font-semibold transition">🔄 Refresh All</button>
-                <button onclick="clearAll()" class="bg-rose-900/30 text-rose-400 hover:bg-rose-900/50 px-4 py-2 rounded-lg text-sm font-semibold transition">🗑️ Clear All</button>
-            </div>
-        </div>
-
-        <div class="bg-gray-800 p-4 rounded-2xl border border-gray-700 shadow-2xl mb-8">
-            <div class="flex flex-col md:flex-row gap-3">
-                <input type="text" id="urlInput" placeholder="https://example.com" class="bg-gray-900 border border-gray-700 p-3 rounded-xl flex-1 outline-none focus:ring-2 focus:ring-emerald-500 transition text-emerald-400">
-                <button onclick="addWebsite()" class="bg-emerald-600 hover:bg-emerald-500 px-8 py-3 rounded-xl font-bold shadow-lg shadow-emerald-900/20 transition-all active:scale-95">Add Monitor</button>
-            </div>
-        </div>
-
-        <div class="mb-6">
-            <input type="text" id="searchInput" onkeyup="searchWebsites()" placeholder="🔍 Filter websites..." class="w-full md:w-64 bg-transparent border-b border-gray-700 p-2 outline-none focus:border-emerald-500 transition">
-        </div>
-
-        <div id="websitesGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            </div>
+<body class="text-slate-100 antialiased">
+  <header class="max-w-6xl mx-auto px-6 py-8 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="h-10 w-10 rounded-xl bg-cyan-400/20 text-cyan-300 grid place-items-center text-lg font-bold">AI</div>
+      <span class="text-xl font-semibold tracking-wide">NeuraFlow</span>
     </div>
+    <nav class="hidden md:flex gap-8 text-sm text-slate-300">
+      <a href="#features" class="hover:text-cyan-300 transition">Features</a>
+      <a href="#demo" class="hover:text-cyan-300 transition">Demo</a>
+      <a href="#pricing" class="hover:text-cyan-300 transition">Pricing</a>
+    </nav>
+    <button class="rounded-lg bg-cyan-500 hover:bg-cyan-400 transition px-4 py-2 text-sm font-semibold text-slate-900">Start Free</button>
+  </header>
 
-    <audio id="alertSound"><source src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg" type="audio/ogg"></audio>
+  <main>
+    <section class="max-w-6xl mx-auto px-6 pt-8 pb-16 grid lg:grid-cols-2 gap-10 items-center">
+      <div>
+        <p class="inline-block text-xs uppercase tracking-[0.2em] text-cyan-300 mb-4">Your AI command center</p>
+        <h1 class="text-4xl md:text-6xl font-black leading-tight">Build, automate, and scale with one AI website.</h1>
+        <p class="mt-6 text-lg text-slate-300 max-w-xl">NeuraFlow combines a smart assistant, workflow automations, and analytics in one beautiful dashboard so your team can move faster every day.</p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <button class="px-6 py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-semibold transition">Get Started</button>
+          <button class="px-6 py-3 rounded-xl border border-slate-500/50 hover:border-cyan-300 hover:text-cyan-300 transition">Book a Live Demo</button>
+        </div>
+        <div class="mt-8 flex items-center gap-8 text-sm text-slate-400">
+          <div><span class="block text-2xl text-cyan-300 font-bold">98%</span>Task automation</div>
+          <div><span class="block text-2xl text-cyan-300 font-bold">4.9/5</span>User satisfaction</div>
+          <div><span class="block text-2xl text-cyan-300 font-bold">24/7</span>AI availability</div>
+        </div>
+      </div>
 
-    <script>
-        let monitors = JSON.parse(localStorage.getItem('monitors')) || [];
-        const grid = document.getElementById('websitesGrid');
+      <div class="glass glow rounded-3xl p-6">
+        <p class="text-xs text-slate-400 uppercase tracking-[0.18em]">Live assistant preview</p>
+        <div class="mt-5 space-y-4">
+          <div class="bg-slate-900/70 border border-slate-700 rounded-2xl p-4">
+            <p class="text-sm text-slate-300">"Create a launch plan for our new AI feature in 3 phases."</p>
+          </div>
+          <div class="bg-cyan-400/15 border border-cyan-300/30 rounded-2xl p-4">
+            <p class="text-sm text-cyan-100">Absolutely. I drafted a roadmap with milestones, owners, KPIs, and deadlines. Want it in Trello or Notion format?</p>
+          </div>
+        </div>
+        <div class="mt-6">
+          <label for="prompt" class="sr-only">Prompt</label>
+          <textarea id="prompt" rows="3" class="w-full rounded-xl bg-slate-950/70 border border-slate-700 p-3 text-sm placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-400" placeholder="Ask your AI assistant anything..."></textarea>
+          <button id="tryButton" class="mt-3 w-full rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-semibold py-2.5 transition">Try Prompt</button>
+          <p id="demoResponse" class="mt-3 text-sm text-slate-300 min-h-[24px]"></p>
+        </div>
+      </div>
+    </section>
 
-        // Initialize Notification
-        if ('Notification' in window && Notification.permission !== 'granted') Notification.requestPermission();
+    <section id="features" class="max-w-6xl mx-auto px-6 py-12">
+      <h2 class="text-3xl font-bold">Everything you need to run AI at scale</h2>
+      <div class="mt-8 grid md:grid-cols-3 gap-6">
+        <article class="glass rounded-2xl p-6">
+          <h3 class="font-semibold text-lg">AI Workflows</h3>
+          <p class="mt-3 text-slate-300 text-sm">Connect prompts to real actions: CRM updates, report generation, and Slack alerts.</p>
+        </article>
+        <article class="glass rounded-2xl p-6">
+          <h3 class="font-semibold text-lg">Knowledge Brain</h3>
+          <p class="mt-3 text-slate-300 text-sm">Upload docs and train contextual responses so your assistant stays on-brand.</p>
+        </article>
+        <article class="glass rounded-2xl p-6">
+          <h3 class="font-semibold text-lg">Smart Analytics</h3>
+          <p class="mt-3 text-slate-300 text-sm">Track response quality, saved time, and adoption with real-time insights.</p>
+        </article>
+      </div>
+    </section>
 
-        function save() {
-            localStorage.setItem('monitors', JSON.stringify(monitors));
-            render();
-        }
+    <section id="pricing" class="max-w-6xl mx-auto px-6 py-14">
+      <div class="glass rounded-3xl p-8 md:p-10">
+        <h2 class="text-3xl font-bold">Simple pricing for every stage</h2>
+        <div class="mt-8 grid md:grid-cols-3 gap-5 text-sm">
+          <div class="rounded-2xl border border-slate-700 p-6">
+            <p class="font-semibold">Starter</p>
+            <p class="text-3xl font-black mt-3">$19<span class="text-base font-medium text-slate-400">/mo</span></p>
+            <p class="mt-3 text-slate-300">Perfect for solo founders and creators.</p>
+          </div>
+          <div class="rounded-2xl border border-cyan-300/40 bg-cyan-400/10 p-6">
+            <p class="font-semibold text-cyan-200">Growth</p>
+            <p class="text-3xl font-black mt-3">$79<span class="text-base font-medium text-slate-300">/mo</span></p>
+            <p class="mt-3 text-slate-200">Best for startups scaling AI operations.</p>
+          </div>
+          <div class="rounded-2xl border border-slate-700 p-6">
+            <p class="font-semibold">Enterprise</p>
+            <p class="text-3xl font-black mt-3">Custom</p>
+            <p class="mt-3 text-slate-300">Advanced security, SSO, and dedicated support.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-        function addWebsite() {
-            const input = document.getElementById('urlInput');
-            let url = input.value.trim();
-            if (!/^https?:\/\//.test(url)) return alert("Include http:// or https://");
-            
-            monitors.push({
-                url: url,
-                active: true,
-                status: 'pending',
-                latency: '--',
-                lastCheck: '--'
-            });
-            input.value = '';
-            save();
-            checkStatus(monitors.length - 1);
-        }
+  <footer class="max-w-6xl mx-auto px-6 py-10 text-sm text-slate-400 border-t border-slate-800">
+    <p>© <span id="year"></span> NeuraFlow AI. Built for teams that ship fast.</p>
+  </footer>
 
-        async function checkStatus(index) {
-            const site = monitors[index];
-            if (!site || !site.active) return;
+  <script>
+    const responses = [
+      'Done. I created a launch roadmap, generated tasks, and scheduled reminders for your team.',
+      'Great prompt. I can now draft your email campaign, social copy, and ad variants in one click.',
+      'I analyzed your request and prepared an execution plan with timeline risks and dependencies.'
+    ];
 
-            const start = performance.now();
-            try {
-                // Using a cache-busting parameter to ensure fresh results
-                await fetch(site.url, { mode: 'no-cors', cache: 'no-store' });
-                const end = performance.now();
-                
-                site.status = 'online';
-                site.latency = Math.round(end - start) + 'ms';
-            } catch (e) {
-                if (site.status === 'online') { // Alert only on transition to down
-                    new Notification(`❌ Down: ${site.url}`);
-                    document.getElementById('alertSound').play();
-                }
-                site.status = 'offline';
-                site.latency = 'ERROR';
-            }
-            site.lastCheck = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-            render();
-        }
+    document.getElementById('tryButton').addEventListener('click', () => {
+      const prompt = document.getElementById('prompt').value.trim();
+      const output = document.getElementById('demoResponse');
+      if (!prompt) {
+        output.textContent = 'Please enter a prompt to see the AI demo response.';
+        return;
+      }
+      const pick = responses[Math.floor(Math.random() * responses.length)];
+      output.textContent = pick;
+    });
 
-        function toggleActive(index) {
-            monitors[index].active = !monitors[index].active;
-            if (monitors[index].active) checkStatus(index);
-            else monitors[index].status = 'pending';
-            save();
-        }
-
-        function removeSite(index) {
-            monitors.splice(index, 1);
-            save();
-        }
-
-        function clearAll() {
-            if(confirm("Delete all monitors?")) { monitors = []; save(); }
-        }
-
-        function searchWebsites() {
-            const term = document.getElementById('searchInput').value.toLowerCase();
-            render(term);
-        }
-
-        function checkAllNow() {
-            monitors.forEach((_, i) => checkStatus(i));
-        }
-
-        function render(filter = '') {
-            grid.innerHTML = '';
-            monitors.forEach((site, i) => {
-                if (filter && !site.url.toLowerCase().includes(filter)) return;
-
-                const card = document.createElement('div');
-                const isOnline = site.status === 'online';
-                const isOffline = site.status === 'offline';
-                
-                card.className = `relative bg-gray-800 p-5 rounded-2xl border-2 transition-all duration-500 ${!site.active ? 'border-gray-700 opacity-60' : isOnline ? 'border-emerald-500/30' : isOffline ? 'border-rose-500/50 shadow-lg shadow-rose-900/20' : 'border-gray-700'}`;
-                
-                card.innerHTML = `
-                    <button onclick="removeSite(${i})" class="absolute top-3 right-3 text-gray-500 hover:text-white transition">✖</button>
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-3 h-3 rounded-full ${!site.active ? 'bg-gray-600' : isOnline ? 'bg-emerald-500 online-pulse' : 'bg-rose-500'}"></div>
-                        <span class="text-[10px] font-bold uppercase tracking-widest text-gray-500">${site.status}</span>
-                    </div>
-                    <h3 class="font-bold truncate pr-6 mb-1 text-sm md:text-base" title="${site.url}">${site.url.replace('https://','').replace('http://','')}</h3>
-                    <div class="flex justify-between items-end mt-6">
-                        <div>
-                            <p class="text-[10px] text-gray-500 uppercase font-bold">Latency</p>
-                            <p class="font-mono text-lg ${isOnline ? 'text-emerald-400' : 'text-gray-400'}">${site.latency}</p>
-                        </div>
-                        <div class="text-right">
-                            <p class="text-[10px] text-gray-500 uppercase font-bold italic">Last Check</p>
-                            <p class="text-xs text-gray-400">${site.lastCheck}</p>
-                        </div>
-                    </div>
-                    <button onclick="toggleActive(${i})" class="mt-4 w-full py-2 rounded-lg text-[10px] font-bold uppercase tracking-tighter transition ${site.active ? 'bg-gray-700 hover:bg-rose-900/40 text-gray-300' : 'bg-emerald-900/40 text-emerald-400 hover:bg-emerald-900/60'}">
-                        ${site.active ? 'Pause Monitor' : 'Resume Monitor'}
-                    </button>
-                `;
-                grid.appendChild(card);
-            });
-        }
-
-        // Background Check Loop (Every 5 minutes)
-        setInterval(checkAllNow, 300000);
-        
-        // Initial Render
-        render();
-        checkAllNow();
-    </script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
